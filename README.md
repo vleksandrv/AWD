@@ -16,7 +16,7 @@ data = data.drop_duplicates()
 
 
 
-#1. HIPOTEZA: PŁATNE APLIKACJE UZYSKUJĄ WYŻSZE OCENY
+### 1. HIPOTEZA: PŁATNE APLIKACJE UZYSKUJĄ WYŻSZE OCENY
 
 #1.1 Sprawdzenie rozkładu częstoci cen aplikacji
 #zastępowanie braków danych
@@ -67,7 +67,7 @@ pytanie2=round(data.groupby("Type")["Rating"].mean(),2)
 
 #Wynik: Płatne aplikacje mają nieznacznie wyższą srednią ocen.
 
-#########################################################################
+
 
 #Wykres kołowy- częstoci płatnych i niepłatnych gier
 
@@ -103,7 +103,7 @@ plt.show()
 
 ap_categories=data["Category"]
 category_czestosci=data.Category.value_counts(dropna=False)
-# widzimy, że najwięcej aplikacji posiada kategorię "Family".
+#widzimy, że najwięcej aplikacji posiada kategorię "Family".
 
 #sprawdzamy 5 najpopularniejszych (najczęstszych) kategorii aplikacji
 
