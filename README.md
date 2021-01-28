@@ -15,7 +15,6 @@ data=pd.read_csv(plik)
 data = data.drop_duplicates()
 
 
-
 ### 1. HIPOTEZA: PŁATNE APLIKACJE UZYSKUJĄ WYŻSZE OCENY
 
 #1.1 Sprawdzenie rozkładu częstoci cen aplikacji
@@ -31,8 +30,6 @@ data['Price'] = data['Price'].astype(float)
 data.info()
 
 Price_czestosci=data.Price.value_counts(dropna=False)
-
-#wychodzi, że najczęciej aplikacje są darmowe
 
 #1.2 koszt najtańszej aplikacji
 data_gryplatne= data[data.Type== 'Paid']
@@ -99,13 +96,12 @@ plt.show()
 
 
 ### 2. HIPOTEZA: Aplikacji z jakich kategorii jest najwięcej i czy pokrywa się to z kategoriami mającymi najwięcej pozytywnych ocen?
-#~czy najpopularniejsze kategorie wiążą się z tymi najlepiej ocenianymi?
 
 ap_categories=data["Category"]
 category_czestosci=data.Category.value_counts(dropna=False)
 #widzimy, że najwięcej aplikacji posiada kategorię "Family".
 
-#sprawdzamy 5 najpopularniejszych (najczęstszych) kategorii aplikacji
+#5 najpopularniejszych (najczęstszych) kategorii aplikacji
 
 czestosci_category=data.Category.value_counts()
 pop_cat=czestosci_category[:5]
@@ -121,7 +117,7 @@ plt.ylabel("Liczba aplikacji w danej kategorii")
 plt.show()
 
 
-#sprawdzamy 5 najlepiej ocenianych kategorii aplikacji
+#5 najlepiej ocenianych kategorii aplikacji
 
 kategorie_oceny=round(data.groupby("Category")["Rating"].mean(),2)
 kategorie_oceny=kategorie_oceny[1:]
@@ -165,3 +161,11 @@ tabela_2.reset_index(level=0, inplace=True)
 
 
 data_events= data[data.Category== 'EVENTS']
+
+
+#zapisywanie tabel do excela
+tabela_1.to_excel('Tabela1.xlsx')
+tabela_2.to_excel('Tabela2.xlsx')
+
+
+
