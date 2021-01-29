@@ -43,6 +43,8 @@ del data['Android ver']
 data['Installs'] = data['Installs'].astype(int) 
 data['Reviews'] = data['Reviews'].astype(int) 
  
+#__________________________________________
+
 #1 pytanie - Które aplikacje mają najlepsze oceny - małe (1-33Mb), srednie(34-67Mb), czy duze (68-100Mb)
 #tworzenie podgrup kategorii Size
 #Małe aplikacje
@@ -106,9 +108,15 @@ del size_rating['Type']
 del size_rating['Price']
 del size_rating['Content Rating']
 
-#size_rating.hist(column='Rating')
-#size_rating.hist(column='Size')
+size_rating.hist(column='Rating', color = "orange", edgecolor='black')
+plt.title("")
+plt.xlabel('Ocena')
+plt.ylabel('ilość ocen')
 
+size_rating.hist(column='Size', color = "yellow", edgecolor='black')
+plt.title("")
+plt.xlabel('Wielkość aplikacji w Mb')
+plt.ylabel('Ilość aplikacji')
 
 
 #___________________________________________________________________
@@ -143,17 +151,19 @@ czestosci["Reviews"] = ilosc_reviews_czestosci
 
 #Zestawienie 10 kateogorii z największą iloscia reviews
 category_reviews_sort = category_reviews_sort.head(10)
-plt.bar(category_reviews_sort.Category, category_reviews_sort.Reviews)
-plt.tick_params(axis='x',rotation=70)
-plt.xlabel('Kategoria')
-plt.ylabel('Recenzje')
-plt.show()
+#plt.bar(category_reviews_sort.Category, category_reviews_sort.Reviews)
+#plt.tick_params(axis='x',rotation=70)
+#plt.xlabel('Kategoria')
+#plt.ylabel('Recenzje')
+#plt.show()
 
 #Zestawienie 10 największych kategorii i iloci ich reviews
 czestosci = czestosci.rename(columns={'Category': 'Ilosć aplikacji w kategorii'})
 czestosci = czestosci.rename(columns={'index': 'Category'})
-plt.bar(czestosci.Category, czestosci.Reviews)
-plt.xlabel('Kategoria')
-plt.ylabel('Recenzje')
-plt.tick_params(axis='x',rotation=70)
-plt.show
+#plt.bar(czestosci.Category, czestosci.Reviews)
+#plt.xlabel('Kategoria')
+#plt.ylabel('Recenzje')
+#plt.tick_params(axis='x',rotation=70)
+#plt.show
+
+
